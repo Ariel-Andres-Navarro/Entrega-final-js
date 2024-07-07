@@ -4,6 +4,8 @@ const verCarrito = document.getElementById("verCarrito");  /*para linkear el car
 
 const modalContainer = document.getElementById("modal-container");  /*linkear modal */
 
+const cantidadCarrito = document.getElementById("cantidadCarrito");
+
 const productos = [
     {
         id: 1,
@@ -122,6 +124,7 @@ productos.forEach((product) => {
      });
     }
     console.log(carrito);
+    carritoCounter();
    });
 });
 
@@ -189,4 +192,11 @@ productos.forEach((product) => {
         });
 
         pintarCarrito();
+    }
+   
+
+    //contador de productos del carrito
+    const carritoCounter = () => {
+        cantidadCarrito.style.display = "block"
+        cantidadCarrito.innerText = carrito.length;
     }
