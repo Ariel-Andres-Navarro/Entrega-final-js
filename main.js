@@ -124,7 +124,7 @@ productos.forEach((product) => {
      });
     }
     console.log(carrito);
-    carritoCounter();
+    carritoCounter();//Contador de productos del carrito
    });
 });
 
@@ -190,7 +190,7 @@ productos.forEach((product) => {
         carrito = carrito.filter((carritoId) => {
             return carritoId !== foundId;
         });
-
+        carritoCounter();
         pintarCarrito();
     }
    
