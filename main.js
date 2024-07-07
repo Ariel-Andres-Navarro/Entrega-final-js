@@ -155,6 +155,7 @@ productos.forEach((product) => {
        <h3>${product.nombre}</h3>
        <p>${product.precio} $ </p>
        <p>Cantidad: ${product.cantidad}</p>
+       <p>Total: ${product.cantidad * product.precio}</p>
         `;
 
        modalContainer.append(carritoContent);
