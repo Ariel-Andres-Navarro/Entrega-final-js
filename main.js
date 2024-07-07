@@ -102,12 +102,26 @@ productos.forEach((product) => {
  
     //aplico funcionalidad
    comprar.addEventListener("click", () => {
+   //agrego contador de cantidades
+   const repeat = carrito.some((repeatProduct) => repeatProduct.id === product.id);
+
+   if (repeat){
+    carrito.map((prod) => {
+       if(prod.id === product.id) {
+        prod.cantidad++;
+       }
+    })
+   } else {
+
     carrito.push({
         id: product.id,
         img: product.img,
         nombre: product.nombre,
         precio: product.precio,     /*selecciona productos al carrito*/ 
-    });
+        cantidad: product.cantidad,
+     });
+    }
+    console.log(carrito);
    });
 });
 
@@ -140,6 +154,7 @@ productos.forEach((product) => {
        <img src="${product.img}">
        <h3>${product.nombre}</h3>
        <p>${product.precio} $ </p>
+       <p>Cantidad: ${product.cantidad}</p>
         `;
 
        modalContainer.append(carritoContent);
