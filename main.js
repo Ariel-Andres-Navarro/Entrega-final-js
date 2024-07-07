@@ -139,6 +139,8 @@ productos.forEach((product) => {
        eliminar.innerText = "X";
        eliminar.className = "delete-product";
        carritoContent.append(eliminar);
+
+       eliminar.addEventListener("click", eliminarProducto);
     });
 
 
@@ -153,3 +155,13 @@ productos.forEach((product) => {
     };
 
     verCarrito.addEventListener("click", pintarCarrito);
+
+    const eliminarProducto = () => {
+        const foundId =carrito.find((element) => element.id);
+
+        carrito = carrito.filter((carritoId) => {
+            return carritoId !== foundId;
+        });
+
+        pintarCarrito();
+    }
