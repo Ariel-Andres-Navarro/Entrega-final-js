@@ -1,0 +1,9 @@
+ //eliminado de linea 208
+ 
+ //    let eliminar = document.createElement("span");
+
+    //    eliminar.innerText = "X";
+    //    eliminar.className = "delete-product";
+    //    carritoContent.append(eliminar);
+
+    //    eliminar.addEventListener("click", eliminarProducto);

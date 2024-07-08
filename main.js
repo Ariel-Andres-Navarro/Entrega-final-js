@@ -175,6 +175,7 @@ localStorage.setItem("carrito", JSON.stringify(carrito));
        <p> Cantidad: ${product.cantidad} </p>
        <span class="sumar"> + </span>
        <p>Total: ${product.cantidad * product.precio} </p>
+       <span class="delete-product"> X </span>
         `;
 
        modalContainer.append(carritoContent);
@@ -188,29 +189,28 @@ localStorage.setItem("carrito", JSON.stringify(carrito));
         }
         saveLocal();
         pintarCarrito();
-       })
+       });
 
        let sumar = carritoContent.querySelector(".sumar");
        sumar.addEventListener("click", () => {
         product.cantidad++;
         saveLocal();
         pintarCarrito();
-       })
+       });
+
+       let eliminar = carritoContent.querySelector(".delete-product");
+
+       eliminar.addEventListener("click", () => {
+        eliminarProducto(product.id);
+       });
        
-
-       let eliminar = document.createElement("span");
-
-       eliminar.innerText = "X";
-       eliminar.className = "delete-product";
-       carritoContent.append(eliminar);
-
-       eliminar.addEventListener("click", eliminarProducto);
     });
 
+    
 
 
-    const total =carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0);
-
+    const total =carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0); //calculo del total
+       //cambie  div por button en createElement
     const totalBuying = document.createElement("div");
     totalBuying.className = "total-content";
     totalBuying.innerHTML = `total a pagar: ${total} $`;
@@ -221,8 +221,8 @@ localStorage.setItem("carrito", JSON.stringify(carrito));
     verCarrito.addEventListener("click", pintarCarrito);
 
 
-    const eliminarProducto = () => {
-        const foundId = carrito.find((element) => element.id);
+    const eliminarProducto = (id) => {
+        const foundId = carrito.find((element) => element.id === id);
 
         carrito = carrito.filter((carritoId) => {
             return carritoId !== foundId;
