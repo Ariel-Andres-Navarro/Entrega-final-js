@@ -3,6 +3,8 @@ const shopContent = document.getElementById("shopContent");  /*linkear html */
 const verCarrito = document.getElementById("verCarrito");  /*para linkear el carrito al html*/ 
 
 const modalContainer = document.getElementById("modal-container");  /*linkear modal */
+//
+const showAlert = document.getElementById("showAlert");
 
 const cantidadCarrito = document.getElementById("cantidadCarrito");
 
@@ -81,8 +83,8 @@ const productos = [
     }
 ];  
 
-let carrito = [];
-
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+//
 
 //create-element 
 productos.forEach((product) => {  
@@ -107,14 +109,13 @@ productos.forEach((product) => {
    //agrego contador de cantidades
    const repeat = carrito.some((repeatProduct) => repeatProduct.id === product.id);
 
-   if (repeat){
+   if (repeat) {
     carrito.map((prod) => {
        if(prod.id === product.id) {
         prod.cantidad++;
        }
-    })
+    });
    } else {
-
     carrito.push({
         id: product.id,
         img: product.img,
@@ -124,9 +125,22 @@ productos.forEach((product) => {
      });
     }
     console.log(carrito);
+    // console.log(carrito.length);
     carritoCounter();//Contador de productos del carrito
+    saveLocal();  //local storage
    });
 });
+
+//set item
+const saveLocal = () => {
+
+localStorage.setItem("carrito", JSON.stringify(carrito));
+
+};
+//get item
+
+//JSON.parse(localStorage.getItem("carrito"));
+
 
 //creo modal
 // verCarrito.addEventListener("click", () => {
@@ -155,15 +169,37 @@ productos.forEach((product) => {
     carritoContent.className = "modal-content";
     carritoContent.innerHTML = `
        <img src="${product.img}">
-       <h3>${product.nombre}</h3>
-       <p>${product.precio} $ </p>
-       <p>Cantidad: ${product.cantidad}</p>
-       <p>Total: ${product.cantidad * product.precio}</p>
+       <h3> ${product.nombre} </h3>
+       <p> ${product.precio} $ </p>
+       <span class="restar"> - </span>
+       <p> Cantidad: ${product.cantidad} </p>
+       <span class="sumar"> + </span>
+       <p>Total: ${product.cantidad * product.precio} </p>
         `;
 
        modalContainer.append(carritoContent);
 
+
+       let restar = carritoContent.querySelector(".restar");
+       //boton restar producto
+       restar.addEventListener("click", () => {
+        if (product.cantidad !== 1) {
+        product.cantidad-- ;
+        }
+        saveLocal();
+        pintarCarrito();
+       })
+
+       let sumar = carritoContent.querySelector(".sumar");
+       sumar.addEventListener("click", () => {
+        product.cantidad++;
+        saveLocal();
+        pintarCarrito();
+       })
+       
+
        let eliminar = document.createElement("span");
+
        eliminar.innerText = "X";
        eliminar.className = "delete-product";
        carritoContent.append(eliminar);
@@ -177,26 +213,37 @@ productos.forEach((product) => {
 
     const totalBuying = document.createElement("div");
     totalBuying.className = "total-content";
-    totalBuying.innerHTML = `total a pagar: ${total} $ `;
+    totalBuying.innerHTML = `total a pagar: ${total} $`;
     modalContainer.append(totalBuying);
-// });  
+ 
     };
 
     verCarrito.addEventListener("click", pintarCarrito);
 
+
     const eliminarProducto = () => {
-        const foundId =carrito.find((element) => element.id);
+        const foundId = carrito.find((element) => element.id);
 
         carrito = carrito.filter((carritoId) => {
             return carritoId !== foundId;
         });
+
         carritoCounter();
+        saveLocal();
         pintarCarrito();
-    }
+
+    };
    
 
     //contador de productos del carrito
     const carritoCounter = () => {
-        cantidadCarrito.style.display = "block"
-        cantidadCarrito.innerText = carrito.length;
-    }
+        cantidadCarrito.style.display = "block";
+
+        const carritoLength = carrito.length;
+
+        localStorage.setItem("carritoLength", JSON.stringify(carritoLength));
+                                //carrito.length
+        cantidadCarrito.innerText = JSON.parse(localStorage.getItem("carritoLength"));
+    };
+
+    carritoCounter();
