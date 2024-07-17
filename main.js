@@ -205,15 +205,13 @@ localStorage.setItem("carrito", JSON.stringify(carrito));
        });
        
     });
-
-    
-
+   
 
     const total =carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0); //calculo del total
        //cambie  div por button en createElement
     const totalBuying = document.createElement("div");
     totalBuying.className = "total-content";
-    totalBuying.innerHTML = `total a pagar: ${total} $`;
+    totalBuying.innerHTML = `Total a pagar: ${total} $`;
     modalContainer.append(totalBuying);
  
     };
