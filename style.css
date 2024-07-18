@@ -1,6 +1,6 @@
 body {
     margin: 0px;
-    background-color: #aa1414;
+    background-color: #4b0202;
 }
 
 /*navbar*/
@@ -14,7 +14,7 @@ body {
     display: flex;
     justify-content: space-between;
     height: 12vh;
-    background-color: #1b1b1b;
+    background-color: #272121;
 }
 .navbar-logo {
     justify-self: start;
@@ -31,12 +31,22 @@ body {
     cursor: pointer; 
 }
 
+/*Banner styles*/
+.banner {
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("https://divineimportsinc.com/wp-content/uploads/2023/04/div-03-1024x574.jpg");
+}
+
 .banner-container {
     text-align: center;
     padding: 15% 0;
 }
 
-.banner-container h1 {
+.banner h1 {
     margin: 0;
     color: white;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
@@ -44,7 +54,7 @@ body {
     font-weight: bold;   
 }
 
-.banner-container p {
+.banner p {
     font-size: 30px;
     color: white;
     opacity: 0.7;

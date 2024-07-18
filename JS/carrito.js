@@ -65,7 +65,7 @@
     
         const total =carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0); //calculo del total
            //cambie  div por button en createElement
-        const totalBuying = document.createElement("div");
+        const totalBuying = document.createElement("button");
         totalBuying.className = "total-content";
         totalBuying.innerHTML = `Total a pagar: ${total} $`;
         modalContainer.append(totalBuying);
