@@ -61,6 +61,23 @@
            });
            
         });
+         //Evento para ver el carrito
+         const verCarrito = document.getElementById("verCarrito");
+         verCarrito.addEventListener("click", () => {
+            pintarCarrito();
+         });
+        //Botón para vaciar el carrito
+        const botonVaciar = document.createElement("button");
+        botonVaciar.className = "mi-boton";
+        botonVaciar.innerText = "Vaciar Carrito";
+        botonVaciar.addEventListener("click", () => {
+            carrito = []; //vaciar carrito poner contador en cero
+            pintarCarrito();
+            carritoCounter();
+            eliminarProducto()
+        });
+        modalContainer.append(botonVaciar);
+
        
     
         const total =carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0); //calculo del total
@@ -71,6 +88,7 @@
         modalContainer.append(totalBuying);
      
         };
+        
     
         verCarrito.addEventListener("click", pintarCarrito);
     

@@ -1,6 +1,6 @@
 body {
     margin: 0px;
-    background-color: #4b0202;
+    background-color: #2d0e1b;
 }
 
 /*navbar*/
@@ -17,6 +17,7 @@ body {
     background-color: #272121;
 }
 .navbar-logo {
+    font-size: 40px;
     justify-self: start;
     margin-left: 20px;
     color: #fff;
@@ -98,7 +99,7 @@ body {
     outline: 0;
     padding: 12px;
     color: white;
-    background-color: #930808;
+    background-color: #461b2d;
     text-align: center;
     cursor: pointer;
     width: 100%;
@@ -117,7 +118,7 @@ body {
     margin: 0 10%;
     max-height: 88vh;
     color: #fff;
-    background-color: #121212;
+    background-color: rgb(121, 130, 129);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -164,7 +165,7 @@ body {
 }
 
 .total-content {
-    background-color: #930808;
+    background-color: #900505cf;
     font-size: 25px;
     margin-bottom: 10px;
     padding: 15px;
@@ -190,6 +191,17 @@ body {
     right: 25px;
     position: absolute;
     display: none;
+}
+
+/*vaciar carrito */
+.mi-boton {
+    background-color: #900505cf;
+    font-size: 25px;
+    margin-bottom: 10px;
+    padding: 15px;
+    text-align: center;
+    padding-top: 15px;
+    cursor: pointer;
 }
 
 .sumar {
