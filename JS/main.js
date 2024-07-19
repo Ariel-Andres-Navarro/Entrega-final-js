@@ -1,3 +1,6 @@
+
+
+
 const shopContent = document.getElementById("shopContent");  /*linkear html */
 
 const verCarrito = document.getElementById("verCarrito");  /*para linkear el carrito al html*/ 
@@ -31,6 +34,9 @@ data.forEach((product) => {
     comprar.className ="comprar";
 
     content.append(comprar);
+
+
+
  
     //aplico funcionalidad
    comprar.addEventListener("click", () => {
