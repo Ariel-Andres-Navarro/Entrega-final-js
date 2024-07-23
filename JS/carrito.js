@@ -79,6 +79,7 @@
             eliminarProducto()
         });
         modalContainer.append(botonVaciar);
+        
 
         const total =carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0); //calculo del total
            //cambie  div por button en createElement
@@ -100,13 +101,9 @@
         }
 
         };
-        //
-
-
+        
         verCarrito.addEventListener("click", pintarCarrito);
 
-
-    
         const eliminarProducto = (id) => {
             const foundId = carrito.find((element) => element.id === id);
     
@@ -132,7 +129,6 @@
         };
     
         carritoCounter();
-
 
 
   
