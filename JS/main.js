@@ -1,12 +1,9 @@
 
-
-
 const shopContent = document.getElementById("shopContent");  /*linkear html */
 
 const verCarrito = document.getElementById("verCarrito");  /*para linkear el carrito al html*/ 
 
 const modalContainer = document.getElementById("modal-container");  /*linkear modal */
-
 
 const cantidadCarrito = document.getElementById("cantidadCarrito");
 
@@ -35,9 +32,6 @@ data.forEach((product) => {
 
     content.append(comprar);
 
-
-
- 
     //aplico funcionalidad
    comprar.addEventListener("click", () => {
    //agrego contador de cantidades
@@ -62,12 +56,25 @@ data.forEach((product) => {
     // console.log(carrito.length);
     carritoCounter();//Contador de productos del carrito
     saveLocal();  //local storage
+   //toastify
+Toastify({
+    text: "producto agregado al carrito",
+    duration: 3000,
+    close: true,
+    gravity: "top", // `top` or `bottom`
+    position: "rigth", // `left`, `center` or `right`
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    style: {
+      background: "linear-gradient(to right, #00b09b, #96c93d)",
+    },
+    onClick: function(){} // Callback after click
+  }).showToast();
+    //toastify
    });
 });
 };
 
 getProducts();
-
 
 //set item
 const saveLocal = () => {

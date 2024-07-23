@@ -7,7 +7,7 @@ const swalWithBootstrapButtons = Swal.mixin({
   });
   swalWithBootstrapButtons.fire({
     title: "Hola Bienvenido a la Tienda de Vinos",
-    text: "Confirma si eres mayor de 18 años",
+    text: "Debes ser mayor de 18 años para comprar bebidas alcoholicas",
     icon: "warning",
     showCancelButton: true,
     confirmButtonText: "Si, soy mayor de 18 años",
@@ -17,7 +17,7 @@ const swalWithBootstrapButtons = Swal.mixin({
     if (result.isConfirmed) {
       swalWithBootstrapButtons.fire({
         title: "",
-        text: "Puedes comprar en la tienda Bienvenido",
+        text: "Bienvenido disfruta de tu estadia en la Tienda de Vinos",
         icon: "success"
       });
     } else if (
@@ -26,7 +26,7 @@ const swalWithBootstrapButtons = Swal.mixin({
     ) {
       swalWithBootstrapButtons.fire({
         title: "",
-        text: "No puedes comprar en la tienda",
+        text: " Lo sentimos no puedes comprar bebidas alcoholicas",
         icon: "error"
       });
     }

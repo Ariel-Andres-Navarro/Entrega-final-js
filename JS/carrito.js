@@ -20,6 +20,9 @@
     
         modalHeader.append(modalbutton);
         
+      //agrege if
+        if (carrito.length > 0){
+
         carrito.forEach((product) => {
         let carritoContent = document.createElement("div");
         carritoContent.className = "modal-content";
@@ -35,7 +38,6 @@
             `;
     
            modalContainer.append(carritoContent);
-    
     
            let restar = carritoContent.querySelector(".restar");
            //boton restar producto
@@ -78,20 +80,32 @@
         });
         modalContainer.append(botonVaciar);
 
-       
-    
         const total =carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0); //calculo del total
            //cambie  div por button en createElement
-        const totalBuying = document.createElement("button");
+        const totalBuying = document.createElement("div");
         totalBuying.className = "total-content";
-        totalBuying.innerHTML = `Total a pagar: ${total} $`;
+        totalBuying.innerHTML = `
+        <div class="total-price"> Total a pagar: ${total} $</div>
+        <button class="btn-primary" id="checkout-btn">Finalizar Compra</button>
+        <div id="button-checkout"></div>
+        `;
+
         modalContainer.append(totalBuying);
-     
+        //agrego el else
+        }else {
+          const modalText = document.createElement("h2");
+          modalText.className = "modal-body";
+          modalText.innerText = "Tu carrito esta vacio";
+          modalContainer.append(modalText);
+        }
+
         };
-        
-    
+        //
+
+
         verCarrito.addEventListener("click", pintarCarrito);
-    
+
+
     
         const eliminarProducto = (id) => {
             const foundId = carrito.find((element) => element.id === id);
@@ -105,8 +119,7 @@
             pintarCarrito();
     
         };
-       
-    
+          
         //contador de productos del carrito
         const carritoCounter = () => {
             cantidadCarrito.style.display = "block";
@@ -120,4 +133,7 @@
     
         carritoCounter();
 
+
+
+  
         
