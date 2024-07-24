@@ -79,7 +79,7 @@
             eliminarProducto()
         });
         modalContainer.append(botonVaciar);
-        
+
 
         const total =carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0); //calculo del total
            //cambie  div por button en createElement
@@ -90,6 +90,8 @@
         <button class="btn-primary" id="checkout-btn">Finalizar Compra</button>
         <div id="button-checkout"></div>
         `;
+        
+
 
         modalContainer.append(totalBuying);
         //agrego el else
@@ -99,7 +101,7 @@
           modalText.innerText = "Tu carrito esta vacio";
           modalContainer.append(modalText);
         }
-
+       
         };
         
         verCarrito.addEventListener("click", pintarCarrito);
@@ -114,7 +116,7 @@
             carritoCounter();
             saveLocal();
             pintarCarrito();
-    
+         
         };
           
         //contador de productos del carrito
@@ -131,5 +133,6 @@
         carritoCounter();
 
 
-  
-        
+       
+
+
