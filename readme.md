@@ -1,1 +1,1 @@
-Preentrega dos del curso de JavaScript.
+Entrega Final del curso de JavaScript.
